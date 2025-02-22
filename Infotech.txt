@@ -1,0 +1,25 @@
+Install the necessary packages:
+
+npm install express mysql2 sequelize body-parser cors
+npm install express body-parser cors sequelize mysql2
+npm install react-router-dom
+
+
+
+
+
+Mysql :
+
+
+CREATE DATABASE infotech_db;
+USE infotech_db;
+
+CREATE TABLE Feedback (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    mobile VARCHAR(20) NOT NULL,
+    message TEXT NOT NULL,
+    createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
