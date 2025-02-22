@@ -1,6 +1,6 @@
 const { Sequelize } = require("sequelize");
 
-const sequelize = new Sequelize("infotech_db", "root", "Harsh@123", {
+const sequelize = new Sequelize("infotech_db", "root_User", "Password", {
     host: "127.0.0.1", // Use 127.0.0.1 instead of localhost
     dialect: "mysql",
     logging: false, // Disable logging
