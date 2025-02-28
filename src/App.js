@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import axios from "axios";
 import Home from "./Home";
 import About from "./About";
 import Contact from "./Contact";
 import Feedback from "./Feedback";
-import Header from "./Header"; // Import the Header component
-import './styles.css'; // Import styles
+import Header from "./Header";
+import Footer from "./Footer";
+import './styles.css';
 
 function App() {
     const [feedback, setFeedback] = useState({ name: "", email: "", mobile: "", message: "" });
@@ -27,13 +28,18 @@ function App() {
 
     return (
         <Router>
-            <Header title="Infotech" searchBar={false} />
-            <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/contact" element={<Contact />} />
-                <Route path="/feedback" element={<Feedback onSubmit={handleSubmit} onChange={handleChange} formData={feedback} />} />
-            </Routes>
+            {/* Pass the logo path directly from public folder */}
+            <Header logo="/images/logo.jpg" searchBar={false} />
+            
+            <main>
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/about" element={<About />} />
+                    <Route path="/contact" element={<Contact />} />
+                    <Route path="/feedback" element={<Feedback onSubmit={handleSubmit} onChange={handleChange} formData={feedback} />} />
+                </Routes>
+            </main>
+            <Footer />
         </Router>
     );
 }
