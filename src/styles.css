@@ -36,7 +36,7 @@ footer {
 
 /* Navbar styles */
 .navbar {
-  background-color: #82c364 !important;
+  background-color: #5d7d06 !important;
   font-weight: 500;
   padding: 5px 20px;
 }
@@ -463,11 +463,13 @@ button[type="submit"]:hover {
 }
 
 .about-hero {
-  background-color: #76a6db;
+  background-color: #f1eb87;
   padding: 40px 0;
-  color: #fff;
+  color: #cb8080;
   text-align: center;
 }
+.about-hero p{
+color: #5e1d9f;}
 
 .about-hero .container {
   max-width: 1200px;
@@ -477,7 +479,7 @@ button[type="submit"]:hover {
 
 .mission {
   padding: 40px 0;
-  background-color: #f8f9fa;
+  background-color: #e8e9e6;
 }
 
 .mission .container {
@@ -493,7 +495,7 @@ button[type="submit"]:hover {
 
 .team {
   padding: 40px 0;
-  background-color: #fff;
+  background-color: #beadad;
 }
 
 .team .container {
@@ -547,7 +549,7 @@ button[type="submit"]:hover {
 
 .contact-details {
   padding: 40px 0;
-  background-color: #f8f9fa;
+  background-color: #f8fafa;
 }
 
 .contact-details .container {
@@ -567,7 +569,7 @@ button[type="submit"]:hover {
   flex: 1;
   min-width: 250px;
   padding: 20px;
-  background: #fff;
+  background: #d7d9c7;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   text-align: center;
@@ -575,8 +577,14 @@ button[type="submit"]:hover {
 
 .contact-info h3 {
   color: #111011;
-  margin-bottom: 15px;
+  margin-bottom: 105px;
+
 }
+.text::after {
+    content: " ";
+    letter-spacing: 4px; /* Adjust as needed */
+}
+
 
 .contact-info p {
   color: #6c757d;
@@ -588,13 +596,13 @@ button[type="submit"]:hover {
   min-width: 300px;
   max-width: 500px;
   padding: 20px;
-  background: #fff;
+  background: #4e504d;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .contact-feedback h3 {
-  color: #111011;
+  color: #f1efed;
   margin-bottom: 15px;
   text-align: center;
 }
