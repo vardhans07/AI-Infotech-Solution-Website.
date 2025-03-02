@@ -175,7 +175,7 @@ button[type="submit"]:hover {
   line-height: 1.2;
   margin: 0;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  background: linear-gradient(90deg, #95d64b 50%, #fff 50%);
+  background: linear-gradient(60deg, #c98585 30%, #7876bb 30%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -193,11 +193,11 @@ button[type="submit"]:hover {
 
 /* Hero Tagline */
 .hero-tagline {
-  font-size: 1.75rem;
+  font-size: 2.75rem;
   font-style: "Lucida Handwriting";
-  color: hsl(260, 12%, 95%);
+  color: hsl(116, 46%, 49%);
   margin-top: 10px;
-  text-shadow: 0 0 5px rgba(225, 232, 19, 0.7);
+  text-shadow: 0 0 5px rgba(97, 217, 219, 0.7);
   display: block;
   animation: driftIn 10.5s infinite ease-in-out;
   transition: color 0.3s ease;
@@ -307,7 +307,7 @@ button[type="submit"]:hover {
 
 .hero .hero-intro {
   padding: 10px;
-  background: rgba(163, 152, 152, 0.5);
+  background: rgba(49, 44, 44, 0.5);
   border-radius: 8px;
   max-width: 800px;
   margin: 0 auto 20px auto;
@@ -344,10 +344,12 @@ button[type="submit"]:hover {
   color: #575353 ;
 }
 
+
+
 /* Courses Section Styling */
 .courses {
   padding: 40px 0;
-  background-color: #f8f9fa;
+  background-color: #6ab86d;
 }
 
 .course-list {
@@ -364,7 +366,7 @@ button[type="submit"]:hover {
   min-width: 250px;
   max-width: 300px;
   padding: 20px;
-  background: white!;
+  background: rgb(237, 238, 238);
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(209, 255, 4, 0.1);
   text-align: center;
@@ -380,12 +382,12 @@ button[type="submit"]:hover {
 }
 
 .course-card h3 {
-  color: #c08cc0;
+  color: #e07d48;
   margin-bottom: 10px;
 }
 
 .course-card p {
-  color: #6c757d;
+  color: #090c0c;
   margin: 5px 0;
   flex-grow: 1;
 }
