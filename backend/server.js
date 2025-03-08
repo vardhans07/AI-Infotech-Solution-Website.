@@ -19,8 +19,8 @@ app.use((req, res, next) => {
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: "rajpatil1664@gmail.com", // Replace with your Gmail
-    pass: "iejlkosgoehrzciw", // Replace with your App Password
+    user: "your email", // Replace with your Gmail
+    pass: "app password", // Replace with your App Password
   },
 });
 
@@ -46,7 +46,7 @@ app.post("/api/feedback", async (req, res) => {
     // Send Email Notification
     const mailOptions = {
       from: "your-email@gmail.com",
-      to: "rajpatil1664@gmail.com",
+      to: "your mail",
       subject: "New Feedback Submission",
       text: `
         New feedback received at ${feedback.createdAt}:
