@@ -69,7 +69,7 @@ app.post("/api/feedback", async (req, res) => {
     const mailOptions = {
       from: "rajpatil1664@gmail.com",
       to: "rajpatil1664@gmail.com",
-      subject: "New Feedback Submission",
+      subject: "Ai Infotech solutions New Feedback Submission",
       text: `
         New feedback received at ${formattedCreatedAt}:
         Name: ${req.body.name}
