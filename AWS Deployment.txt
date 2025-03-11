@@ -1,0 +1,425 @@
+# Step 1: Prepare Your Application for Deployment
+Update feedback.js for Relative Path:
+Change the fetch URL to a relative path so it works on EC2:
+
+import React, { useState } from "react";
+import "./styles.css";
+
+function Feedback() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    mobile: "",
+    message: "",
+  });
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    setLoading(true);
+    try {
+      const response = await fetch("/api/feedback", { // Updated to relative path
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+      if (response.ok) {
+        console.log("API response:", result);
+        alert(`Feedback submitted successfully at ${result.createdAt || "Unknown time"}!`);
+        setFormData({ name: "", email: "", mobile: "", message: "" });
+      } else {
+        alert("Error submitting feedback: " + result.error);
+        console.error("Error:", result.error);
+      }
+    } catch (error) {
+      alert("Network error: " + error.message);
+      console.error("Network error:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <div className="feedback-page">
+      <section className="feedback-hero">
+        <div className="container">
+          <h1 className="feedback-title">We Value Your Feedback</h1>
+          <p className="feedback-subtitle">Let us know how we can improve!</p>
+        </div>
+      </section>
+      <section className="feedback-form-section">
+        <div className="container">
+          <form onSubmit={handleSubmit} className="feedback-form">
+            <input
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              placeholder="Your Name"
+              required
+              className="feedback-input"
+            />
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              placeholder="Your Email"
+              required
+              className="feedback-input"
+            />
+            <input
+              type="text"
+              name="mobile"
+              value={formData.mobile}
+              onChange={handleChange}
+              placeholder="Your Mobile"
+              required
+              pattern="[0-9]{10}"
+              title="Please enter a valid 10-digit mobile number"
+              className="feedback-input"
+            />
+            <textarea
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
+              placeholder="Your Message"
+              rows="5"
+              required
+              className="feedback-textarea"
+            />
+            <button type="submit" className="feedback-button" disabled={loading}>
+              {loading ? "Submitting..." : "Submit Feedback"}
+            </button>
+          </form>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+export default Feedback;
+
+
+
+
+
+# Build the React Frontend:
+In infotech/  :
+
+npm install
+npm run build
+
+This creates infotech/build/ with static files.
+
+
+
+step-3
+
+Update server.js to Serve Static Files:
+
+Modify backend/server.js to serve the React build folder and keep your existing logic:
+
+
+const express = require("express");
+const bodyParser = require("body-parser");
+const cors = require("cors");
+const sequelize = require("./db");
+const Feedback = require("./models/feedbackModel");
+const nodemailer = require("nodemailer");
+const path = require("path");
+
+const app = express();
+app.use(cors());
+app.use(bodyParser.json());
+
+// Serve static files from the React build folder
+app.use(express.static(path.join(__dirname, "../build")));
+
+// Debugging Middleware
+app.use((req, res, next) => {
+  console.log(`[${req.method}] ${req.url}`);
+  next();
+});
+
+// Email Transporter Setup
+const transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: "rajpatil1664@gmail.com",
+    pass: "iejlkosgoehrzciw",
+  },
+});
+
+// GET API Endpoint
+app.get("/api/feedback", async (req, res) => {
+  try {
+    console.log("GET request received");
+    const feedbacks = await Feedback.findAll();
+    res.json(feedbacks);
+  } catch (error) {
+    console.error("Error fetching feedback:", error);
+    res.status(500).json({ error: "Failed to fetch feedbacks" });
+  }
+});
+
+// POST API Endpoint with Email Notification
+app.post("/api/feedback", async (req, res) => {
+  try {
+    console.log("POST request received:", req.body);
+    const feedback = await Feedback.create(req.body);
+    console.log("Feedback saved:", feedback.toJSON());
+
+    let formattedCreatedAt;
+    const createdAtValue = feedback.createdAt;
+    if (!createdAtValue || isNaN(new Date(createdAtValue).getTime())) {
+      console.error("Invalid or missing createdAt:", createdAtValue);
+      formattedCreatedAt = new Date().toLocaleString("en-US", {
+        timeZone: "Asia/Kolkata",
+        dateStyle: "long",
+        timeStyle: "short",
+      });
+    } else {
+      formattedCreatedAt = new Date(createdAtValue).toLocaleString("en-US", {
+        timeZone: "Asia/Kolkata",
+        dateStyle: "long",
+        timeStyle: "short",
+      });
+    }
+
+    const mailOptions = {
+      from: "rajpatil1664@gmail.com",
+      to: "rajpatil1664@gmail.com",
+      subject: "New Feedback Submission",
+      text: `
+        New feedback received at ${formattedCreatedAt}:
+        Name: ${req.body.name}
+        Email: ${req.body.email}
+        Mobile: ${req.body.mobile}
+        Message: ${req.body.message}
+      `,
+    };
+
+    await transporter.sendMail(mailOptions);
+    console.log("Notification email sent");
+
+    res.status(201).json({
+      message: "Feedback submitted successfully!",
+      feedback: feedback.toJSON(),
+      createdAt: formattedCreatedAt,
+    });
+  } catch (error) {
+    console.error("Error inserting feedback or sending email:", error);
+    res.status(500).json({ error: "Failed to submit feedback" });
+  }
+});
+
+// Serve React app for all other routes
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../build", "index.html"));
+});
+
+sequelize
+  .sync({ alter: true })
+  .then(() => {
+    console.log("Database synced successfully!");
+    app.listen(5000, () => console.log("Server running on port 5000"));
+  })
+  .catch((err) => {
+    console.error("Database sync failed:", err);
+    process.exit(1);
+  });
+
+
+
+step 4
+
+Test Locally
+
+npm run build
+cd backend
+npm install
+node server.js
+
+Visit http://localhost:5000 to ensure the React app loads and feedback submission works.\
+
+
+
+# Step 2: Launch an EC2 Instance
+
+
+1 . Log into AWS Console:
+Go to console.aws.amazon.com > “EC2”.
+
+
+2 . Launch Instance:
+Click “Launch Instance”.
+Name: InfotechServer.
+AMI: “Ubuntu Server 22.04 LTS (HVM), SSD Volume Type” (Free Tier).
+Instance Type: t2.micro (Free Tier).
+Key Pair: Create new (infotech-key.pem), download it.
+Network Settings:
+Security Group: Create new (InfotechSecurityGroup):
+SSH (port 22): My IP.
+HTTP (port 80): Anywhere (0.0.0.0/0).
+Custom TCP (port 5000): Anywhere (0.0.0.0/0).
+Storage: 8 GiB gp2.
+Launch the instance.
+
+
+
+3. Get Public IP:
+Go to “Instances”, note the “Public IPv4 address” (e.g., 54.123.45.67).
+
+
+
+# Step 3: Connect to EC2 and Set Up Environment
+
+
+1 .SSH into EC2
+chmod 400 ~/Downloads/infotech-key.pem
+ssh -i ~/Downloads/infotech-key.pem ubuntu@<public-ip>
+
+
+2.Update System:
+sudo apt update -y && sudo apt upgrade -y
+
+
+3.Install Node.js:
+curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+sudo apt install -y nodejs
+
+4.Install MySQL:
+
+sudo apt install -y mysql-server
+sudo systemctl start mysql
+sudo systemctl enable mysql
+sudo mysql_secure_installation
+
+
+Set root password (Harsh@123), answer prompts.
+Create database
+
+sudo mysql -u root -p
+
+CREATE DATABASE infotech_db;
+GRANT ALL PRIVILEGES ON infotech_db.* TO 'root'@'localhost' IDENTIFIED BY 'Harsh@123';
+FLUSH PRIVILEGES;
+EXIT;
+
+
+5. Install Nginx
+
+sudo apt install -y nginx
+sudo systemctl start nginx
+sudo systemctl enable nginx
+
+
+# Step 4: Deploy Website and Database
+
+
+1.Transfer Files to EC2:
+
+
+From your local machine:
+scp -i ~/Downloads/infotech-key.pem -r /path/to/infotech ubuntu@<public-ip>:~/infotech
+
+
+Example: scp -i ~/Downloads/infotech-key.pem -r ./infotech ubuntu@54.123.45.67:~/infotech.
+
+
+2.Install Dependencies
+bash:
+ssh -i ~/Downloads/infotech-key.pem ubuntu@<public-ip>
+cd ~/infotech
+npm install
+npm run build
+cd backend
+npm install
+
+
+3.Set Up MySQL Database
+bash:
+node server.js
+
+
+Stop with Ctrl+C after “Database synced successfully!”.
+
+
+4.Run the Application:
+bash:
+node server.js &
+
+Test: http://<public-ip>:5000.
+
+
+5.Configure Nginx :
+bash:
+sudo nano /etc/nginx/sites-available/default
+
+
+
+
+#  text(this will appear ) -
+
+server {
+    listen 80;
+    server_name <public-ip>;
+    location / {
+        proxy_pass http://localhost:5000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
+
+
+
+Save and restart:
+bash :
+sudo nginx -t
+sudo systemctl restart nginx
+
+
+
+
+6.Keep Node.js Running with PM2:
+bash:
+sudo npm install -g pm2
+cd ~/infotech/backend
+pm2 start server.js --name "infotech-app"
+pm2 startup  # Follow instructions
+pm2 save
+
+
+#Step 5: Verify Deployment
+
+
+Visit http://<public-ip> (e.g., http://54.123.45.67).
+Submit a feedback form:
+Check rajpatil1664@gmail.com for the email.
+
+Verify MySQL:
+bash:
+
+mysql -u root -p
+USE infotech_db;
+SELECT * FROM Feedback;
+
+
+
+
