@@ -1,14 +1,19 @@
 const { Sequelize } = require("sequelize");
 
-const sequelize = new Sequelize("infotech_db", "root_User", "Password", {
-    host: "127.0.0.1", // Use 127.0.0.1 instead of localhost
-    dialect: "mysql",
-    logging: false, // Disable logging
+const sequelize = new Sequelize("infotech_db", "root", "Harsh@123", {
+  host: "127.0.0.1",
+  dialect: "mysql",
+  logging: false,
+  dialectOptions: {
+    dateStrings: true,
+    typeCast: true,
+  },
+  timezone: "+05:30", // Set to IST (adjust to your timezone if different)
 });
 
-// Test Connection
-sequelize.authenticate()
-    .then(() => console.log(" Database connected successfully!"))
-    .catch(err => console.error(" Error connecting to database:", err));
+sequelize
+  .authenticate()
+  .then(() => console.log("Database connected successfully!"))
+  .catch((err) => console.error("Error connecting to database:", err));
 
 module.exports = sequelize;
