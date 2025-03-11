@@ -1,0 +1,15 @@
+infotech/
+├── backend/           # Node.js backend files
+│   ├── server.js
+│   ├── db.js
+│   ├── models/
+│   │   └── feedbackModel.js
+│   └── package.json
+├── public/            # React static assets
+│   ├── index.html
+│   └── (other static files)
+├── src/               # React source files
+│   ├── feedback.js   # Old code provided
+│   ├── styles.css
+│   └── (other JS/CSS files)
+└── package.json       # React frontend package.json
