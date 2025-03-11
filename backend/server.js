@@ -19,8 +19,8 @@ app.use((req, res, next) => {
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: "your email", // Replace with your Gmail
-    pass: "app password", // Replace with your App Password
+    user: "rajpatil1664@gmail.com",
+    pass: "iejlkosgoehrzciw",
   },
 });
 
@@ -41,15 +41,37 @@ app.post("/api/feedback", async (req, res) => {
   try {
     console.log("POST request received:", req.body);
     const feedback = await Feedback.create(req.body);
-    console.log("Feedback saved:", feedback.toJSON());
+    console.log("Feedback saved (full object):", feedback.toJSON());
+    console.log("Raw createdAt (type):", typeof feedback.createdAt, feedback.createdAt);
+
+    // Format createdAt with fallback
+    let formattedCreatedAt;
+    const createdAtValue = feedback.createdAt;
+    console.log("createdAtValue:", createdAtValue); // Raw value check
+
+    if (!createdAtValue || isNaN(new Date(createdAtValue).getTime())) {
+      console.error("Invalid or missing createdAt:", createdAtValue);
+      formattedCreatedAt = new Date().toLocaleString("en-US", {
+        timeZone: "Asia/Kolkata",
+        dateStyle: "long",
+        timeStyle: "short",
+      }); // Use current time as fallback
+    } else {
+      formattedCreatedAt = new Date(createdAtValue).toLocaleString("en-US", {
+        timeZone: "Asia/Kolkata",
+        dateStyle: "long",
+        timeStyle: "short",
+      });
+    }
+    console.log("Formatted createdAt:", formattedCreatedAt);
 
     // Send Email Notification
     const mailOptions = {
-      from: "your-email@gmail.com",
-      to: "your mail",
-      subject: "New Feedback Submission",
+      from: "rajpatil1664@gmail.com",
+      to: "rajpatil1664@gmail.com",
+      subject: "Ai Infotech solutions New Feedback Submission",
       text: `
-        New feedback received at ${feedback.createdAt}:
+        New feedback received at ${formattedCreatedAt}:
         Name: ${req.body.name}
         Email: ${req.body.email}
         Mobile: ${req.body.mobile}
@@ -60,7 +82,11 @@ app.post("/api/feedback", async (req, res) => {
     await transporter.sendMail(mailOptions);
     console.log("Notification email sent");
 
-    res.status(201).json({ message: "Feedback submitted successfully!", feedback });
+    res.status(201).json({
+      message: "Feedback submitted successfully!",
+      feedback: feedback.toJSON(),
+      createdAt: formattedCreatedAt,
+    });
   } catch (error) {
     console.error("Error inserting feedback or sending email:", error);
     res.status(500).json({ error: "Failed to submit feedback" });
