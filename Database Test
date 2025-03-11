@@ -1,0 +1,29 @@
+use infotech_db;
+
+select * from feedback;
+truncate feedback;
+
+
+DROP TABLE Feedback;
+CREATE TABLE Feedback (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  email VARCHAR(255) NOT NULL,
+  mobile VARCHAR(20) NOT NULL,
+  message TEXT NOT NULL,
+  createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+
+
+INSERT INTO Feedback (name, email, mobile, message) 
+VALUES ('test', 'test@example.com', '1234567890', 'test message');
+SELECT * FROM Feedback ORDER BY id DESC LIMIT 1;
+
+
+
+
+
+
+
