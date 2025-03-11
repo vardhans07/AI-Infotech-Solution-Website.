@@ -32,8 +32,8 @@ function Feedback() {
 
       const result = await response.json();
       if (response.ok) {
-        alert("Feedback submitted successfully!");
-        console.log(result);
+        console.log("API response:", result);
+        alert(`Feedback submitted successfully at ${result.createdAt || "Unknown time"}!`);
         setFormData({ name: "", email: "", mobile: "", message: "" });
       } else {
         alert("Error submitting feedback: " + result.error);
