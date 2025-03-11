@@ -1,6 +1,6 @@
 const { Sequelize } = require("sequelize");
 
-const sequelize = new Sequelize("infotech_db", "root", "Password", {
+const sequelize = new Sequelize("infotech_db", "root", "Harsh@123", {
   host: "127.0.0.1",
   dialect: "mysql",
   logging: false,
@@ -8,7 +8,7 @@ const sequelize = new Sequelize("infotech_db", "root", "Password", {
     dateStrings: true,
     typeCast: true,
   },
-  timezone: "+00:00", // Adjust to your timezone, e.g., "+05:30" for IST
+  timezone: "+05:30", // Set to IST (adjust to your timezone if different)
 });
 
 sequelize
