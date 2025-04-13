@@ -21,7 +21,7 @@ function Home() {
               <h4 className="Attract-Your-Visitors-txt-30">
                 <span
                   style={{
-                    color: "rgb(148, 191, 174)",
+                    color: "rgb(227, 121, 1)",
                     fontFamily: "Lucida Handwriting",
                   }}
                 >
@@ -55,7 +55,8 @@ function Home() {
           <div className="row course-list">
             <div className="course-card">
               <h3>Unix</h3>
-              <p>Manage and learn Linux, Unix, and RHEL.</p>
+              <p>Master essential skills in Linux, Unix, and RHEL, enabling you to manage, configure, and 
+                troubleshoot systems with efficiency and confidence.</p>
               <div className="course-duration">
                 <p>
                   <strong>Duration:</strong> 12 weeks
@@ -65,8 +66,9 @@ function Home() {
             <div className="course-card">
               <h3>Oracle Databases</h3>
               <p>
-                Master data analysis and data administration with Oracle
-                Databases.
+              Dive into Oracle
+               Databases to support business intelligence and decision-making.
+              
               </p>
               <div className="course-duration">
                 <p>
@@ -76,7 +78,8 @@ function Home() {
             </div>
             <div className="course-card">
               <h3>Storage & Backup</h3>
-              <p>Learn Storage and Backup.</p>
+              <p>Learn comprehensive strategies for storage solutions and backup techniques,
+                 ensuring your data is secure and recoverable.</p>
               <div className="course-duration">
                 <p>
                   <strong>Duration:</strong> 8 weeks
