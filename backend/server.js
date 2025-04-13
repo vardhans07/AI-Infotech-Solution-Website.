@@ -4,10 +4,14 @@ const cors = require("cors");
 const sequelize = require("./db");
 const Feedback = require("./models/feedbackModel");
 const nodemailer = require("nodemailer");
+const path = require("path");
 
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
+
+// Serve static files from the React build folder
+app.use(express.static(path.join(__dirname, "../build")));
 
 // Debugging Middleware
 app.use((req, res, next) => {
@@ -41,21 +45,17 @@ app.post("/api/feedback", async (req, res) => {
   try {
     console.log("POST request received:", req.body);
     const feedback = await Feedback.create(req.body);
-    console.log("Feedback saved (full object):", feedback.toJSON());
-    console.log("Raw createdAt (type):", typeof feedback.createdAt, feedback.createdAt);
+    console.log("Feedback saved:", feedback.toJSON());
 
-    // Format createdAt with fallback
     let formattedCreatedAt;
     const createdAtValue = feedback.createdAt;
-    console.log("createdAtValue:", createdAtValue); // Raw value check
-
     if (!createdAtValue || isNaN(new Date(createdAtValue).getTime())) {
       console.error("Invalid or missing createdAt:", createdAtValue);
       formattedCreatedAt = new Date().toLocaleString("en-US", {
         timeZone: "Asia/Kolkata",
         dateStyle: "long",
         timeStyle: "short",
-      }); // Use current time as fallback
+      });
     } else {
       formattedCreatedAt = new Date(createdAtValue).toLocaleString("en-US", {
         timeZone: "Asia/Kolkata",
@@ -63,9 +63,7 @@ app.post("/api/feedback", async (req, res) => {
         timeStyle: "short",
       });
     }
-    console.log("Formatted createdAt:", formattedCreatedAt);
 
-    // Send Email Notification
     const mailOptions = {
       from: "rajpatil1664@gmail.com",
       to: "rajpatil1664@gmail.com",
@@ -93,7 +91,11 @@ app.post("/api/feedback", async (req, res) => {
   }
 });
 
-// Sync Database and Start Server
+// Serve React app for all other routes
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../build", "index.html"));
+});
+
 sequelize
   .sync({ alter: true })
   .then(() => {
