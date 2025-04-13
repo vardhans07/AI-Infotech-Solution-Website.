@@ -31,7 +31,7 @@ function Contact() {
 
       const result = await response.json();
       if (response.ok) {
-        alert("Feedback submitted successfully!");
+        alert(`Feedback submitted successfully at ${new Date(result.feedback.createdAt).toLocaleString()}!`);
         console.log(result);
         setFormData({ name: "", email: "", mobile: "", message: "" });
       } else {
