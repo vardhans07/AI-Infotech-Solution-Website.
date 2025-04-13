@@ -1,11 +1,10 @@
 import React from "react";
-import "./styles.css"; // Import styles.css from the same directory
-import Heading from "./heading"; // Reuse your Heading component
+import "./styles.css";
+import Heading from "./heading";
 
 function About() {
   return (
     <div className="about-page">
-      {/* Hero/About Intro Section */}
       <section className="about-hero">
         <div className="container">
           <div className="hero-content">
@@ -17,7 +16,6 @@ function About() {
         </div>
       </section>
 
-      {/* Mission Section */}
       <section className="mission">
         <div className="container">
           <Heading subtitle="OUR MISSION" title="Why We Exist" />
@@ -29,7 +27,6 @@ function About() {
         </div>
       </section>
 
-      {/* Team/Highlights Section */}
       <section className="team">
         <div className="container">
           <Heading subtitle="OUR STRENGTHS" title="What Sets Us Apart" />
