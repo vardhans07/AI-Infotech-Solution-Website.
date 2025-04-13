@@ -4,7 +4,7 @@ const Footer = () => {
     return (
         <footer className=" py-3">
             <p className="text-center">
-                Copyright &copy; AI Infotech Solutions All rights reserved | Design by Rajvardhan.
+                Copyright &copy; AI Infotech Solutions All rights reserved | Design by Rajvardhan & Amol.
             </p>
             <div className="text-center">
                 <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="icon"><i className='fab fa-facebook-f'></i></a>
