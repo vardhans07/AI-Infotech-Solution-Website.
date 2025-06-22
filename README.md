@@ -63,6 +63,48 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/a
 
 ### Deployment
 
+
+# Infotech Feedback Web App
+
+A full-stack web application that collects user feedback via a React frontend and stores it in a MySQL database. The backend, built with Node.js and Express, also sends email notifications upon submission. The app is deployed on an AWS EC2 instance with Nginx as a reverse proxy.
+
+---
+
+## 🌐 Live URL
+
+Visit: `http://<your-ec2-public-ip>`
+
+---
+
+## 🧰 Tech Stack
+
+- **Frontend**: React, HTML/CSS
+- **Backend**: Node.js, Express
+- **Database**: MySQL with Sequelize ORM
+- **Email Service**: Nodemailer via Gmail
+- **Hosting & Deployment**: AWS EC2 (Ubuntu), Nginx, PM2
+
+---
+
+## 🚀 Features
+
+- User feedback form with validation
+- Submits feedback to backend via relative path `/api/feedback`
+- Stores feedback in MySQL database
+- Sends confirmation email on new feedback
+- Mobile-responsive UI
+- Deployment-ready with EC2 setup instructions
+
+---
+
+## 🛠️ Installation and Setup
+
+### 1. Clone this repository
+```bash
+git clone https://github.com/<your-username>/infotech-feedback-app.git
+cd infotech-feedback-app
+
+
 This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
 ### `npm run build` fails to minify
