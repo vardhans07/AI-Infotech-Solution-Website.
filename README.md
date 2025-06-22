@@ -1,48 +1,47 @@
-# Website Link
+# 💡 AI-Infotech-Solution-Website.
 
-Check out our website here: [AI InfoTech Classes](https://aiinfotechclasess.netlify.app/)
-
-## Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Installation and Setup
-
-A full-stack web application that collects user feedback via a React frontend and stores it in a MySQL database. The backend, built with Node.js and Express, also sends email notifications upon submission. The app is deployed on an AWS EC2 instance with Nginx as a reverse proxy.
+Welcome to the **AI InfoTech Feedback Platform** — a full-stack web app designed to collect and manage user feedback effortlessly. Built with React and Node.js, and powered by MySQL and AWS, this project seamlessly blends performance, design, and functionality.
 
 ---
 
-## 🌐 Live URL
+## 🔗 Live Preview
 
-Visit: [AI InfoTech Classes](https://aiinfotechclasess.netlify.app/)
-
----
-
-## 🧰 Tech Stack
-
-- **Frontend**: React, HTML/CSS
-- **Backend**: Node.js, Express
-- **Database**: MySQL with Sequelize ORM
-- **Email Service**: Nodemailer via Gmail
-- **Hosting & Deployment**: AWS EC2 (Ubuntu), Nginx, PM2
+🌐 **Check it out live:**  
+👉 [AI InfoTech Classes](https://aiinfotechclasess.netlify.app/)
 
 ---
 
-## 🚀 Features
+## 🚧 Project Overview
 
-- User feedback form with validation
-- Submits feedback to backend via relative path `/api/feedback`
-- Stores feedback in MySQL database
-- Sends confirmation email on new feedback
-- Mobile-responsive UI
-- Deployment-ready with EC2 setup instructions
+This application lets users submit feedback via a sleek, responsive form. Submissions are processed through a Node.js backend, saved in a MySQL database, and trigger a notification email via Nodemailer. Fully deployed on **AWS EC2** using **Nginx** for production-grade performance.
 
 ---
 
-## 🛠️ Installation and Setup
+## ⚙️ Built With
 
-### 1. Clone this repository
+- 🎨 **Frontend**: React, HTML5, CSS3
+- 🧠 **Backend**: Node.js, Express
+- 🗄️ **Database**: MySQL, Sequelize ORM
+- ✉️ **Email Service**: Nodemailer (Gmail SMTP)
+- ☁️ **Infrastructure**: AWS EC2 (Ubuntu), Nginx, PM2
+
+---
+
+## ✨ Key Features
+
+- ✅ Real-time feedback submission
+- 🛡️ Form validation with mobile number pattern
+- 📥 Stores data using Sequelize ORM
+- ✉️ Sends automatic email notifications on each submission
+- 📱 Fully responsive for all screen sizes
+- 🔐 Deploy-ready with database + domain setup
+
+---
+
+## 🚀 Getting Started
+
+### 🔁 Clone the Repository
+
 ```bash
 git clone https://github.com/vardhans07/infotech-feedback-app.git
 cd infotech-feedback-app
-
