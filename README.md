@@ -29,12 +29,9 @@ This application lets users submit feedback via a sleek, responsive form. Submis
 
 ## ✨ Key Features
 
-- ✅ Real-time feedback submission
-- 🛡️ Form validation with mobile number pattern
 - 📥 Stores data using Sequelize ORM
 - ✉️ Sends automatic email notifications on each submission
-- 📱 Fully responsive for all screen sizes
-- 🔐 Deploy-ready with database + domain setup
+
 
 ---
 
