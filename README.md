@@ -1,6 +1,6 @@
 # 💡 AI-Infotech-Solution-Website.
 
-Welcome to the **AI InfoTech Feedback Platform** — a full-stack web app designed to collect and manage user feedback effortlessly. Built with React and Node.js, and powered by MySQL and AWS, this project seamlessly blends performance, design, and functionality.
+Welcome to the **AI-Infotech-Solution-Website** — a full-stack web app designed to collect and manage user feedback effortlessly. Built with React and Node.js, and powered by MySQL and AWS, this project seamlessly blends performance, design, and functionality.
 
 ---
 
