@@ -72,7 +72,7 @@ A full-stack web application that collects user feedback via a React frontend an
 
 ## 🌐 Live URL
 
-Visit: `http://<your-ec2-public-ip>`
+
 
 ---
 
@@ -101,7 +101,7 @@ Visit: `http://<your-ec2-public-ip>`
 
 ### 1. Clone this repository
 ```bash
-git clone https://github.com/<your-username>/infotech-feedback-app.git
+git clone https://github.com/vardhans07/infotech-feedback-app.git
 cd infotech-feedback-app
 
 
