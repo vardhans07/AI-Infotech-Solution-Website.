@@ -7,9 +7,8 @@ const Footer = () => {
                 Copyright &copy; AI Infotech Solutions All rights reserved | Design by Rajvardhan & Amol.
             </p>
             <div className="text-center">
-                <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="icon"><i className='fab fa-facebook-f'></i></a>
-                <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer" className="icon"><i className='fab fa-twitter'></i></a>
-                <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" className="icon"><i className='fab fa-instagram'></i></a>
+                <a href="https://www.facebook.com/profile.php?id=61578102849260" target="_blank" rel="noopener noreferrer" className="icon"><i className='fab fa-facebook-f'></i></a>
+                <a href="https://www.instagram.com/aiinfotechsolutions97/" target="_blank" rel="noopener noreferrer" className="icon"><i className='fab fa-instagram'></i></a>
             </div>
         </footer>
     );
