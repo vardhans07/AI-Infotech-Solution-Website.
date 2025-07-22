@@ -157,18 +157,16 @@ button[type="submit"]:hover {
 
 .hero .hero-header {
   margin-bottom: 20px;
-  display: flex; /* Flexbox for side-by-side layout */
-  justify-content: space-between; /* Space out left and right */
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  text-align: left; /* Default to left for main content */
+  text-align: left;
 }
 
-/* Main Heading Section */
 .hero-main {
-  flex: 1; /* Takes available space on left */
+  flex: 1;
 }
 
-/* Heading Styling */
 .hero #heading h1 {
   font-size: 3.5rem;
   font-weight: 700;
@@ -179,8 +177,6 @@ button[type="submit"]:hover {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  /* animation: fadeIn 2s ease-in-out infinite; */
-   /* Fade-in for impact */
 }
 
 .hero #heading h3 {
@@ -191,7 +187,6 @@ button[type="submit"]:hover {
   margin-bottom: 10px;
 }
 
-/* Hero Tagline */
 .hero-tagline {
   font-size: 2.75rem;
   font-style: "Lucida Handwriting";
@@ -207,11 +202,9 @@ button[type="submit"]:hover {
   color: #c3e084;
 }
 
-/* MotionArt Section on Right */
 .MotionArt-sec-3 {
- /* text-align: center;  Align text to right */
- margin-left: 200px;
-  animation: pulse 2.5s infinite ease-in-out; /* Subtle pulse effect */
+  margin-left: 200px;
+  animation: pulse 2.5s infinite ease-in-out;
 }
 
 .Attract-Your-Visitors-txt-30 {
@@ -240,69 +233,33 @@ button[type="submit"]:hover {
   transform: scale(1.05) rotate(2deg);
 }
 
-/* Animations */
 @keyframes fadeIn {
-  0% {
-    opacity: 0;
-    transform: translateX(-20px);
-  }
-  50% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-  100% {
-    opacity: 0.8;
-    transform: translateX(-5px);
-  }
+  0% { opacity: 0; transform: translateX(-20px); }
+  50% { opacity: 1; transform: translateX(0); }
+  100% { opacity: 0.8; transform: translateX(-5px); }
 }
 
 @keyframes driftIn {
-  0% {
-    transform: translateX(100%) rotate(5deg);
-    opacity: 0;
-  }
-  70% {
-    transform: translateX(-10%) rotate(-2deg);
-    opacity: 1;
-  }
-  85% {
-    transform: translateX(5%) rotate(1deg);
-    opacity: 1;
-  }
-  100% {
-    transform: translateX(0) rotate(0deg);
-    opacity: 1;
-  }
+  0% { transform: translateX(100%) rotate(5deg); opacity: 0; }
+  70% { transform: translateX(-10%) rotate(-2deg); opacity: 1; }
+  85% { transform: translateX(5%) rotate(1deg); opacity: 1; }
+  100% { transform: translateX(0) rotate(0deg); opacity: 1; }
 }
 
 @keyframes wave {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  25% {
-    transform: translateY(-5px);
-  }
-  75% {
-    transform: translateY(5px);
-  }
+  0%, 100% { transform: translateY(0); }
+  25% { transform: translateY(-5px); }
+  75% { transform: translateY(5px); }
 }
 
 @keyframes bounce {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
 }
 
 @keyframes pulse {
-  0%, 100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.02);
-  }
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.02); }
 }
 
 .hero .hero-intro {
@@ -341,15 +298,42 @@ button[type="submit"]:hover {
   background-color: rgba(226, 221, 221, 0.3);
   padding: 20px;
   border-radius: 8px;
-  color: #575353 ;
+  color: #575353;
 }
 
-
-
-/* Courses Section Styling */
 .courses {
   padding: 40px 0;
-  background-color: #6ab86d;
+  background-color: #abdfad;
+}
+
+.courses h3 {
+  color: #b8611b;
+  font-size: 1.5rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  animation: fadeInUp 1s ease-out;
+}
+
+.courses h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #6574e1;
+  position: relative;
+  margin-bottom: 30px;
+  animation: fadeInUp 1.2s ease-out;
+}
+
+.courses h1::after {
+  content: "";
+  position: absolute;
+  top: 60px;
+  left: 50%;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #db76c5, #d5ed36);
+  transform: translateX(-50%);
 }
 
 .course-list {
@@ -392,7 +376,6 @@ button[type="submit"]:hover {
   flex-grow: 1;
 }
 
-/* Duration Styling */
 .course-duration {
   margin-top: auto;
   padding-top: 10px;
@@ -422,16 +405,45 @@ button[type="submit"]:hover {
   left: 10%;
 }
 
-/* Testimonials Section */
 .testimonials {
   padding: 40px 0;
-  background-color: #fff;
+  position: relative;
+}
+
+.testimonials h3 {
+  color: #76a6db;
+  font-size: 1.5rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  animation: fadeInUp 1s ease-out;
+}
+
+.testimonials h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #2c3e50;
+  position: relative;
+  margin-bottom: 30px;
+  animation: fadeInUp 1.2s ease-out;
+}
+
+.testimonials h1::after {
+  content: "";
+  position: absolute;
+  top: 60px;
+  left: 50%;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #76a6db, #95d64b);
+  transform: translateX(-50%);
 }
 
 .testimonial-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 40px;
   justify-content: center;
   max-width: 1200px;
   margin: 0 auto;
@@ -456,12 +468,11 @@ button[type="submit"]:hover {
   color: #4052ab;
   text-align: right;
 }
-/* About Page Styles */
+
 .about-page {
   flex: 1;
 }
 
-/* About Hero Section */
 .about-hero {
   background: linear-gradient(135deg, #f1eb87 0%, #d4c963 100%);
   padding: 80px 0;
@@ -542,7 +553,6 @@ button[type="submit"]:hover {
   color: #cb8080;
 }
 
-/* Mission Section */
 .mission {
   padding: 60px 0;
   background: linear-gradient(to bottom, #e8e9e6 0%, #d1d3d0 100%);
@@ -598,7 +608,6 @@ button[type="submit"]:hover {
   animation: fadeInUp 1.4s ease-out;
 }
 
-/* Team/Strengths Section */
 .team {
   padding: 60px 0;
   background: linear-gradient(145deg, #beadad 0%, #a39292 100%);
@@ -688,58 +697,29 @@ button[type="submit"]:hover {
   font-size: 1.1rem;
 }
 
-/* Animations (reused from Contact) */
 @keyframes fadeInUp {
-  0% {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes rotateGradient {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
-/* Responsive Adjustments */
 @media screen and (max-width: 768px) {
-  .about-hero {
-    padding: 60px 0;
-    min-height: 250px;
-  }
-  .about-hero h1 {
-    font-size: 2.5rem;
-  }
-  .about-hero .hero-tagline {
-    font-size: 1.1rem;
-  }
-  .mission h1,
-  .team h1 {
-    font-size: 2rem;
-  }
-  .mission h3,
-  .team h3 {
-    font-size: 1.2rem;
-  }
-  .mission-content p {
-    font-size: 1rem;
-  }
+  .about-hero { padding: 60px 0; min-height: 250px; }
+  .about-hero h1 { font-size: 2.5rem; }
+  .about-hero .hero-tagline { font-size: 1.1rem; }
+  .mission h1, .team h1 { font-size: 2rem; }
+  .mission h3, .team h3 { font-size: 1.2rem; }
+  .mission-content p { font-size: 1rem; }
 }
 
-/* Contact Page Styles */
-/* Contact Page Styles */
 .contact-page {
   flex: 1;
 }
-/* Contact Hero Section */
+
 .contact-hero {
   background: linear-gradient(135deg, #76a6db 0%, #4a7bb8 100%);
   padding: 80px 0;
@@ -773,11 +753,6 @@ button[type="submit"]:hover {
   padding: 0 20px;
 }
 
-.hero-content {
-  position: relative;
-}
-
-/* Assuming Heading component renders h3 and h1 */
 .contact-hero h3 {
   color: #d7e74b;
   font-size: 1.5rem;
@@ -830,44 +805,6 @@ button[type="submit"]:hover {
 
 .contact-hero .hero-tagline:hover {
   color: #95d64b;
-}
-
-/* Animations */
-@keyframes fadeInUp {
-  0% {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes rotateGradient {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-/* Responsive adjustments */
-@media screen and (max-width: 768px) {
-  .contact-hero {
-    padding: 60px 0;
-    min-height: 250px;
-  }
-  .contact-hero h1 {
-    font-size: 2.5rem;
-  }
-  .contact-hero h3 {
-    font-size: 1.2rem;
-  }
-  .contact-hero .hero-tagline {
-    font-size: 1.1rem;
-  }
 }
 
 .contact-details {
@@ -1018,30 +955,16 @@ button[type="submit"]:hover {
   transform: scale(1.05);
 }
 
-/* Hero section responsiveness */
 @media screen and (max-width: 768px) {
-  .hero {
-    padding: 30px 0;
-    min-height: 80vh;
-  }
-  .hero .hero-header {
-    flex-direction: column; /* Stack on mobile */
-    text-align: center;
-  }
-  .MotionArt-sec-3 {
-    margin-top: 20px;
-    text-align: center; /* Center on mobile */
-  }
-  .hero #heading h1 {
-    font-size: 2.5rem;
-  }
-  .hero #heading h3 {
-    font-size: 1.2rem;
-  }
-  .hero-tagline {
-    font-size: 1rem;
-  }
-  .hero .hero-intro p {
-    font-size: 1rem;
-  }
+  .hero { padding: 30px 0; min-height: 80vh; }
+  .hero .hero-header { flex-direction: column; text-align: center; }
+  .MotionArt-sec-3 { margin-top: 20px; text-align: center; }
+  .hero #heading h1 { font-size: 2.5rem; }
+  .hero #heading h3 { font-size: 1.2rem; }
+  .hero-tagline { font-size: 1rem; }
+  .hero .hero-intro p { font-size: 1rem; }
+  .contact-hero { padding: 60px 0; min-height: 250px; }
+  .contact-hero h1 { font-size: 2.5rem; }
+  .contact-hero h3 { font-size: 1.2rem; }
+  .contact-hero .hero-tagline { font-size: 1.1rem; }
 }
