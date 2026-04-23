@@ -40,5 +40,5 @@ This application lets users submit feedback via a sleek, responsive form. Submis
 ### 🔁 Clone the Repository
 
 ```bash
-git clone https://github.com/vardhans07/infotech-feedback-app.git
-cd infotech-feedback-app
+git clone https://github.com/vardhans07/AI-Infotech-Solution-Website..git
+cd AI-Infotech-Solution
