@@ -41,4 +41,7 @@ This application lets users submit feedback via a sleek, responsive form. Submis
 
 ```bash
 git clone https://github.com/vardhans07/AI-Infotech-Solution-Website..git
+```
+```bash
 cd AI-Infotech-Solution
+```
