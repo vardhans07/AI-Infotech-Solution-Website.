@@ -61,6 +61,17 @@ npm run build
 ```
 This creates infotech/build/ with static files.
 
+## Install the necessary packages:
+```bash
+npm install express mysql2 sequelize body-parser cors
+```
+```bash
+npm install express body-parser cors sequelize mysql2
+```
+```bash
+
+npm install react-router-dom
+```
 ## Database Setup (MySQL)
 
 Log in to MySQL:
